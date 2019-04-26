@@ -1,2 +1,5 @@
 # react-native-loginapp
-Login app using react native.
+A simple login app with login screen, having username and password and button field.
+Added image.
+
+
