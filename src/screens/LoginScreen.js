@@ -12,6 +12,10 @@ interface State {
 
 export class LoginScreen extends Component<{}, State> {
 
+    static navigationOptions = {
+    title: "Login"
+  }
+
     state: State = {
         email: "",
         password: ""
@@ -24,7 +28,10 @@ export class LoginScreen extends Component<{}, State> {
         console.log("Password: "+this.state.password);
 
         if(this.state.email == "admin" && this.state.password == "admin") {
-            alert("Logged in successfully.");
+            //alert("Logged in successfully.");
+            console.log("Logged in successfully.");
+            this.props.navigation.navigate('HomeScreen')
+        
         } else {
             alert("Incorrect username and password");
         }
@@ -39,6 +46,7 @@ export class LoginScreen extends Component<{}, State> {
     };
 
     render() {
+        
         return (
             <View style={styles.container}>
 
