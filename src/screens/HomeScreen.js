@@ -5,7 +5,11 @@ import colors from '../config/colors';
 export default class HomeScreen extends Component {
 
      static navigationOptions = {
-    title: "Home"
+    title: "Home",
+    headerStyle: {
+      backgroundColor: colors.SDKRED,
+    },
+    headerTintColor: colors.WHITE
   }
 
     render() {
@@ -22,12 +26,12 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: colors.BLACK,
+        backgroundColor: colors.BACKGCOLOR,
         alignItems: "center",
         justifyContent: "center"
     }, 
     textStyle: {
-        color: colors.WHITE,
+        color: colors.MAINTEXTCOLOR,
         textAlign: "center",
         height: 20,
         alignItems: "center"

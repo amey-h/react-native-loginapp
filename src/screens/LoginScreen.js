@@ -13,7 +13,11 @@ interface State {
 export class LoginScreen extends Component<{}, State> {
 
     static navigationOptions = {
-    title: "Login"
+    title: "Login",
+    headerStyle: {
+      backgroundColor: colors.SDKRED,
+    },
+    headerTintColor: colors.WHITE
   }
 
     state: State = {
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: colors.LIGHTGRAY3,
+        backgroundColor: colors.BACKGCOLOR,
         alignItems: "center",
         justifyContent: "space-between"
     },
