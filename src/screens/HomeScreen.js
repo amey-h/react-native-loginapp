@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import colors from '../config/colors';
 
 export default class HomeScreen extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading : true
+        }
+
+    }
+
+    componentDidMount() {
+        console.log('Calling api...')
+        return fetch('https://facebook.github.io/react-native/movies.json')
+        .then((response)=>response.json())
+        .then((responseJson) => {
+                this.setState({
+                    isLoading: false,
+                    dataSource: responseJson.movies,
+                    
+                }, function() {
+                    console.log('success::', responseJson.movies);
+                });
+        })
+        .catch((error) => {
+            console.error(error)
+        });
+    }
 
     static navigationOptions = {
     title: "Home",
@@ -17,6 +43,11 @@ export default class HomeScreen extends Component {
         return (
             <View style = {styles.container}>
             <Text style={styles.textStyle}> Welcome {this.props.navigation.state.params.userNameVal} .This is HomeScreen </Text>
+            <FlatList
+          data={this.state.dataSource}
+          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
+          keyExtractor={({id}, index) => id}
+        />
             </View>
         );
     }
