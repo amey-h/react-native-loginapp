@@ -34,7 +34,9 @@ export class LoginScreen extends Component<{}, State> {
         if(this.state.email == "admin" && this.state.password == "admin") {
             //alert("Logged in successfully.");
             console.log("Logged in successfully.");
-            this.props.navigation.navigate('HomeScreen')
+            this.props.navigation.navigate('HomeScreen', {
+                userNameVal: this.state.email,
+            })
         
         } else {
             alert("Incorrect username and password");
