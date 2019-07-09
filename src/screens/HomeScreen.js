@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import colors from '../config/colors';
+import CustomListview from '../components/CustomListview';
 
 export default class HomeScreen extends Component {
 
@@ -42,12 +43,10 @@ export default class HomeScreen extends Component {
         const { state, navigate } = this.props.navigation;
         return (
             <View style = {styles.container}>
-            <Text style={styles.textStyle}> Welcome {this.props.navigation.state.params.userNameVal} .This is HomeScreen </Text>
-            <FlatList
-          data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
-          keyExtractor={({id}, index) => id}
-        />
+                {/* <Text style={styles.textStyle}> Welcome {this.props.navigation.state.params.userNameVal} .This is HomeScreen </Text> */}
+                        <CustomListview
+                             itemList={this.state.dataSource}
+                        />
             </View>
         );
     }
